@@ -24,7 +24,7 @@ export function App() {
   }, [contacts]);
 
   function handleInput(e) {
-    const { name, value } = e.target;
+    const { value } = e.target;
     setFilter(value);
   }
 
