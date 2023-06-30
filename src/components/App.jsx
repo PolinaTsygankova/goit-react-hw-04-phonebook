@@ -6,18 +6,10 @@ import { ContactList } from './ContactList/ContactList';
 import { MainTitle, MainDiv, ContactTitle } from './App.styled';
 
 export function App() {
-  const [contacts, setContacts] = useState([]);
+  const [contacts, setContacts] = useState(
+    () => JSON.parse(localStorage.getItem('contacts')) || []
+  );
   const [filter, setFilter] = useState('');
-
-  useEffect(() => {
-    const contactsFromLocalStorage = JSON.parse(
-      localStorage.getItem('contacts')
-    );
-
-    if (contactsFromLocalStorage) {
-      setContacts(contactsFromLocalStorage);
-    }
-  }, []);
 
   useEffect(() => {
     localStorage.setItem('contacts', JSON.stringify(contacts));
